@@ -1,10 +1,20 @@
 from django.http import HttpResponse
+from django.shortcuts import render, redirect
 
-from .models import db
+from .models import subjectsByClass
+
 
 def index(request):
-    s = 'list of announcment\r\n\r\n\r\n'
-    for bb in db.objects.order_by('-published'):
-        s+= bb.title + bb.content + '\r\n\r\n'
-    return HttpResponse(s, content_type = 'text/plain; charset=utf-8')
+    return render(request, 'samplesite/index.html')
 
+def marks(request):
+    return render(request, 'samplesite/marks.html')
+
+def subjects(request):
+    return render(request, 'samplesite/subjects.html')
+
+def notebook(request):
+    return render(request, 'samplesite/notebook.html')
+
+def login(request):
+    return render(request, 'samplesite/login.html')
